@@ -12,19 +12,22 @@ interface PreviewControlsProps {
 }
 
 const templates: { value: TemplateType; label: string }[] = [
-  { value: 'minimalist', label: 'Minimalist' },
-  { value: 'traditional', label: 'Traditional' },
-  { value: 'royal', label: 'Royal Gold' },
-  { value: 'modern-teal', label: 'Modern Teal' },
-  { value: 'elegant-maroon', label: 'Elegant Maroon' },
-  { value: 'floral', label: 'Elegant Floral' },
+  { value: 'minimalist', label: '✦ Minimalist' },
+  { value: 'traditional', label: '☸ Traditional' },
+  { value: 'royal', label: '❖ Royal Gold' },
+  { value: 'modern-teal', label: '◉ Modern Teal' },
+  { value: 'elegant-maroon', label: '☙ Elegant Maroon' },
+  { value: 'floral', label: '✿ Elegant Floral' },
+  { value: 'sunset-glow', label: '★ Sunset Glow' },
+  { value: 'navy-classic', label: '■ Navy Classic' },
+  { value: 'sage-botanical', label: '♧ Sage Botanical' },
 ];
 
 const PreviewControls = ({ template, onTemplateChange, onDownload, onShare, onMatchKundli }: PreviewControlsProps) => {
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
       <Select value={template} onValueChange={(v) => onTemplateChange(v as TemplateType)}>
-        <SelectTrigger className="w-[180px] text-xs">
+        <SelectTrigger className="w-[200px] text-xs">
           <SelectValue placeholder="Select template" />
         </SelectTrigger>
         <SelectContent>
