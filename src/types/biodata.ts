@@ -77,4 +77,13 @@ export const defaultBiodata: BiodataFormData = {
   preferredProfession: '',
 };
 
-export type TemplateType = 'minimalist' | 'traditional' | 'royal' | 'modern-teal' | 'elegant-maroon' | 'floral';
+export type TemplateType =
+  | 'minimalist'
+  | 'traditional'
+  | 'royal'
+  | 'modern-teal'
+  | 'elegant-maroon'
+  | 'floral'
+  | 'sunset-glow'
+  | 'navy-classic'
+  | 'sage-botanical';
