@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Biodata Bliss</title>
+    <script>
+      // SPA redirect trick for GitHub Pages.
+      // When GitHub Pages serves a 404 for any deep path, this page
+      // re-encodes the URL into a query string and redirects to index.html,
+      // which then decodes it and hands off to React Router.
+      // pathSegmentsToKeep = 1 because the repo is deployed at /biodata-bliss/
+      var pathSegmentsToKeep = 1;
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
