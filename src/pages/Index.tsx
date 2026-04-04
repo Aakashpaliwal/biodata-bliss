@@ -72,25 +72,20 @@ const Index = () => {
         innerEl.style.maxHeight = savedInnerMaxHeight;
       }
 
-      // ── 5. Build PDF (multi-page if content > one A4) ──
+      // ── 5. Build PDF — always fit everything onto a single A4 page ──
       const imgData = canvas.toDataURL('image/jpeg', 0.95);
       const pdf  = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
       const pdfW = pdf.internal.pageSize.getWidth();
       const pdfH = pdf.internal.pageSize.getHeight();
-      const imgH = (canvas.height * pdfW) / canvas.width;
 
-      if (imgH <= pdfH) {
-        pdf.addImage(imgData, 'JPEG', 0, 0, pdfW, imgH);
-      } else {
-        let offsetY = 0;
-        let page = 0;
-        while (offsetY < imgH) {
-          if (page > 0) pdf.addPage();
-          pdf.addImage(imgData, 'JPEG', 0, -offsetY, pdfW, imgH);
-          offsetY += pdfH;
-          page++;
-        }
-      }
+      // Scale image to fill full A4 height, keeping aspect ratio
+      const imgH = (canvas.height * pdfW) / canvas.width;
+      const scale = imgH > pdfH ? pdfH / imgH : 1;
+      const finalW = pdfW * scale;
+      const finalH = imgH * scale;
+      const marginX = (pdfW - finalW) / 2;
+
+      pdf.addImage(imgData, 'JPEG', marginX, 0, finalW, finalH);
 
       pdf.save(`${data.name || 'biodata'}.pdf`);
       toast.success('PDF downloaded!', { id: toastId });
