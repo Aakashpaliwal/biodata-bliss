@@ -457,7 +457,7 @@ const BiodataPreview = ({ data, template }: BiodataPreviewProps) => {
         <div className="space-y-1">
           {hasPersonal && (
             <Section title="Personal Details" titleClass={c.titleClass}>
-              <PersonalRows data={data} includeAstro={hasAstro} />
+              <PersonalRows data={data} includeAstro={!!hasAstro} />
             </Section>
           )}
           {hasProfessional && (
