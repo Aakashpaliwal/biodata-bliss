@@ -86,7 +86,7 @@ const Index = () => {
               onMatchKundli={() => setKundliOpen(true)}
             />
             <div className="flex justify-center">
-              <div className="w-full max-w-[480px]">
+              <div className="w-full max-w-[480px]" ref={previewRef}>
                 <BiodataPreview data={data} template={template} />
               </div>
             </div>
