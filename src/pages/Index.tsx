@@ -1,18 +1,22 @@
 import { useRef, useState } from 'react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { BiodataFormData, TemplateType, defaultBiodata } from '@/types/biodata';
 import BiodataForm from '@/components/BiodataForm';
 import BiodataPreview from '@/components/BiodataPreview';
 import PreviewControls from '@/components/PreviewControls';
 import KundliMatchModal from '@/components/KundliMatchModal';
 import { Button } from '@/components/ui/button';
-import { Eye, PenLine } from 'lucide-react';
+import { Eye, PenLine, ArrowLeft } from 'lucide-react';
 import { toast } from 'sonner';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
 const Index = () => {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const initialTemplate = (searchParams.get('template') as TemplateType) || 'traditional';
   const [data, setData] = useState<BiodataFormData>(defaultBiodata);
-  const [template, setTemplate] = useState<TemplateType>('traditional');
+  const [template, setTemplate] = useState<TemplateType>(initialTemplate);
   const [kundliOpen, setKundliOpen] = useState(false);
   const [mobileView, setMobileView] = useState<'form' | 'preview'>('form');
   const previewRef = useRef<HTMLDivElement>(null);
@@ -51,14 +55,30 @@ const Index = () => {
       {/* Header */}
       <header className="border-b bg-card/80 backdrop-blur-sm sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-sm">B</span>
+          <div className="flex items-center gap-3">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => navigate('/')}
+              className="gap-1.5 text-muted-foreground hover:text-foreground -ml-2"
+            >
+              <ArrowLeft size={15} /> Change Template
+            </Button>
+            <div className="w-px h-5 bg-border" />
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+                <span className="text-primary-foreground font-display font-bold text-sm">B</span>
+              </div>
+              <div>
+                <h1 className="font-display font-bold text-base leading-tight">Biodata Maker</h1>
+                <p className="text-[10px] text-muted-foreground leading-tight">& Kundli Matcher</p>
+              </div>
             </div>
-            <div>
-              <h1 className="font-display font-bold text-base leading-tight">Biodata Maker</h1>
-              <p className="text-[10px] text-muted-foreground leading-tight">& Kundli Matcher</p>
-            </div>
+          </div>
+          <div className="hidden sm:flex items-center gap-2 text-xs text-muted-foreground">
+            <span className="text-primary font-medium">Step 2</span>
+            <span>/</span>
+            <span>Fill Details</span>
           </div>
         </div>
       </header>
