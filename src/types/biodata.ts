@@ -110,4 +110,18 @@ export type TemplateType =
   | 'pallav'
   | 'meher'
   | 'ananda'
-  | 'suvarna';
+  | 'suvarna'
+  // Dark & Vibrant
+  | 'crimson-bold'
+  | 'emerald-dark'
+  | 'indigo-night'
+  // Festive Indian
+  | 'saffron-utsav'
+  | 'marigold-fest'
+  // Ornate Border
+  | 'lotus-frame'
+  | 'mandala-cream'
+  | 'vermillion-frame'
+  // Pastel Romantic
+  | 'blush-romance'
+  | 'lilac-dream';

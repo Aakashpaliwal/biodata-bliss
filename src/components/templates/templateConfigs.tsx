@@ -783,6 +783,467 @@ export const configs: Record<TemplateType, TemplateConfig> = {
       </div>
     ),
   },
+
+  /* ═══════════════════════════════════════════════
+     DARK & VIBRANT (3)
+     ═══════════════════════════════════════════════ */
+  'crimson-bold': {
+    wrapper: 'bg-[#7B0010] text-white',
+    titleClass: 'text-[11px] font-bold uppercase tracking-[0.15em] text-[#FFD700] mb-1.5 pb-1 border-b border-[#FFD700]/30',
+    fontFamily: "'Playfair Display', serif",
+    photoBorder: '#FFD700',
+    photoSize: 'lg',
+    photoPosition: 'header-right',
+    header: (data) => (
+      <div className="text-center mb-4">
+        <p className="text-[11px] text-[#FFD700]/80 tracking-wider" style={{ fontFamily: "'Playfair Display', serif" }}>॥ श्री गणेशाय नमः ॥</p>
+        <div className="flex items-center justify-center gap-3 my-1.5">
+          <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#FFD700]/50" />
+          <span className="text-[#FFD700] text-xs">✦</span>
+          <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#FFD700]/50" />
+        </div>
+        <h1 className="text-xl font-bold text-white" style={{ fontFamily: "'Playfair Display', serif" }}>{data.name || 'Your Name'}</h1>
+        <p className="text-[9px] tracking-[0.3em] uppercase text-[#FFD700]/50 mt-0.5">Marriage Biodata</p>
+      </div>
+    ),
+    decor: (
+      <div className="absolute inset-0 pointer-events-none select-none">
+        {/* Outer gold border */}
+        <div className="absolute inset-1.5 border border-[#FFD700]/40" />
+        <div className="absolute inset-3 border border-[#FFD700]/20" />
+        {/* Corner ornaments */}
+        {(['top-2 left-2', 'top-2 right-2 -scale-x-100', 'bottom-2 left-2 -scale-y-100', 'bottom-2 right-2 -scale-x-100 -scale-y-100'] as const).map((pos, i) => (
+          <div key={i} className={`absolute ${pos} w-8 h-8 opacity-70`}>
+            <svg viewBox="0 0 32 32" fill="none" stroke="#FFD700" strokeWidth="1">
+              <path d="M2 2 L12 2 L12 4 L4 4 L4 12 L2 12 Z" fill="#FFD700" opacity="0.4" stroke="none"/>
+              <path d="M2 2 L12 2" strokeWidth="1.5"/>
+              <path d="M2 2 L2 12" strokeWidth="1.5"/>
+              <circle cx="8" cy="8" r="2" fill="#FFD700" opacity="0.5"/>
+            </svg>
+          </div>
+        ))}
+        {/* Diamond mid-border accents */}
+        <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 border border-[#FFD700]/50 bg-[#7B0010]" />
+        <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 border border-[#FFD700]/50 bg-[#7B0010]" />
+        <div className="absolute left-1.5 top-1/2 -translate-y-1/2 w-3 h-3 rotate-45 border border-[#FFD700]/50 bg-[#7B0010]" />
+        <div className="absolute right-1.5 top-1/2 -translate-y-1/2 w-3 h-3 rotate-45 border border-[#FFD700]/50 bg-[#7B0010]" />
+      </div>
+    ),
+  },
+
+  'emerald-dark': {
+    wrapper: 'bg-[#134A2C] text-white',
+    titleClass: 'text-[11px] font-bold uppercase tracking-[0.15em] text-[#D4AC0D] mb-1.5 pb-1 border-b border-[#D4AC0D]/30',
+    fontFamily: "'Cormorant Garamond', serif",
+    photoBorder: '#D4AC0D',
+    photoSize: 'lg',
+    photoPosition: 'header-right',
+    header: (data) => (
+      <div className="text-center mb-4">
+        <div className="flex items-center justify-center gap-3 mb-1">
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#D4AC0D]/50 to-transparent" />
+          <span className="text-[#D4AC0D] text-sm">❖</span>
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#D4AC0D]/50 to-transparent" />
+        </div>
+        <p className="text-[10px] text-[#D4AC0D]/70 tracking-wider" style={{ fontFamily: "'Cormorant Garamond', serif" }}>॥ श्री गणेशाय नमः ॥</p>
+        <h1 className="text-xl font-bold text-white mt-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{data.name || 'Your Name'}</h1>
+        <p className="text-[9px] tracking-[0.3em] uppercase text-[#D4AC0D]/50 mt-0.5">Shubh Vivah Biodata</p>
+      </div>
+    ),
+    decor: (
+      <div className="absolute inset-0 pointer-events-none select-none">
+        <div className="absolute inset-2 border border-[#D4AC0D]/30" />
+        <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#134A2C] via-[#D4AC0D]/40 to-[#134A2C]" />
+        <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-[#134A2C] via-[#D4AC0D]/40 to-[#134A2C]" />
+        {(['top-2 left-2', 'top-2 right-2 -scale-x-100', 'bottom-2 left-2 -scale-y-100', 'bottom-2 right-2 -scale-x-100 -scale-y-100'] as const).map((pos, i) => (
+          <div key={i} className={`absolute ${pos} w-10 h-10`}>
+            <svg viewBox="0 0 40 40" fill="none" stroke="#D4AC0D" strokeWidth="0.8" opacity="0.5">
+              <path d="M2 2 L14 2 L14 3 L3 3 L3 14 L2 14 Z" fill="#D4AC0D" opacity="0.3" stroke="none"/>
+              <line x1="2" y1="2" x2="14" y2="2" strokeWidth="1.2"/>
+              <line x1="2" y1="2" x2="2" y2="14" strokeWidth="1.2"/>
+              <path d="M6 6 Q10 2 14 6 Q10 10 6 6Z" fill="#D4AC0D" opacity="0.2" stroke="none"/>
+            </svg>
+          </div>
+        ))}
+        {/* Subtle mandala watermark */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-[0.03]">
+          <svg viewBox="0 0 200 200" className="w-2/3 h-2/3" fill="none" stroke="#D4AC0D">
+            {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map(a => (
+              <ellipse key={a} cx="100" cy="35" rx="12" ry="28" transform={`rotate(${a} 100 100)`} strokeWidth="0.5"/>
+            ))}
+            <circle cx="100" cy="100" r="85" strokeWidth="0.5"/>
+            <circle cx="100" cy="100" r="60" strokeWidth="0.5"/>
+            <circle cx="100" cy="100" r="30" strokeWidth="0.5"/>
+          </svg>
+        </div>
+      </div>
+    ),
+  },
+
+  'indigo-night': {
+    wrapper: 'bg-[#151C4A] text-white',
+    titleClass: 'text-[11px] font-bold uppercase tracking-[0.15em] text-[#C9A84C] mb-1.5 pb-1 border-b border-[#C9A84C]/25',
+    fontFamily: "'Montserrat', sans-serif",
+    photoBorder: '#C9A84C',
+    photoSize: 'lg',
+    photoPosition: 'header-right',
+    header: (data) => (
+      <div className="text-center mb-4 bg-[#0E1235] mx-[-20px] sm:mx-[-28px] mt-[-20px] sm:mt-[-28px] px-5 sm:px-7 py-4">
+        <p className="text-[9px] tracking-[0.5em] uppercase text-[#C9A84C]/70">Marriage Biodata</p>
+        <h1 className="text-xl font-bold text-white mt-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>{data.name || 'Your Name'}</h1>
+        <div className="flex items-center justify-center gap-3 mt-1.5">
+          <div className="h-px w-12 bg-[#C9A84C]/40" />
+          <div className="w-1.5 h-1.5 rotate-45 bg-[#C9A84C]/60" />
+          <div className="h-px w-12 bg-[#C9A84C]/40" />
+        </div>
+      </div>
+    ),
+    decor: (
+      <div className="absolute inset-0 pointer-events-none select-none">
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#C9A84C]/60 via-[#FFD700]/80 to-[#C9A84C]/60" />
+        <div className="absolute inset-3 border border-[#C9A84C]/15" />
+        {/* Star field */}
+        {[
+          [15, 35], [25, 70], [35, 20], [60, 45], [75, 80], [85, 30], [90, 65],
+          [10, 85], [50, 15], [65, 60], [40, 75], [80, 50],
+        ].map(([x, y], i) => (
+          <div key={i} className="absolute w-0.5 h-0.5 rounded-full bg-white/20" style={{ left: `${x}%`, top: `${y}%` }} />
+        ))}
+      </div>
+    ),
+  },
+
+  /* ═══════════════════════════════════════════════
+     FESTIVE INDIAN (2)
+     ═══════════════════════════════════════════════ */
+  'saffron-utsav': {
+    wrapper: 'bg-white text-[#3D2000]',
+    titleClass: 'text-[11px] font-bold uppercase tracking-[0.15em] text-white bg-[#E07000] px-2 py-1 rounded-sm mb-1.5',
+    fontFamily: "'Playfair Display', serif",
+    photoBorder: '#E07000',
+    photoSize: 'lg',
+    photoPosition: 'header-right',
+    header: (data) => (
+      <div className="bg-gradient-to-r from-[#E07000] to-[#F59300] mx-[-20px] sm:mx-[-28px] mt-[-20px] sm:mt-[-28px] px-5 sm:px-7 py-4 mb-4">
+        <p className="text-[10px] text-white/70 tracking-wider text-center" style={{ fontFamily: "'Playfair Display', serif" }}>☸ शुभ विवाह ☸</p>
+        <h1 className="text-xl font-bold text-white text-center mt-1" style={{ fontFamily: "'Playfair Display', serif" }}>{data.name || 'Your Name'}</h1>
+        <p className="text-[9px] tracking-[0.3em] uppercase text-white/60 mt-0.5 text-center">Marriage Biodata</p>
+      </div>
+    ),
+    decor: (
+      <div className="absolute inset-0 pointer-events-none select-none">
+        <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#E07000] to-[#F59300]" />
+        <div className="absolute bottom-2 left-0 right-0 h-px bg-[#E07000]/20" />
+        {/* Floral bottom corners */}
+        {(['bottom-3 left-3', 'bottom-3 right-3 -scale-x-100'] as const).map((pos, i) => (
+          <div key={i} className={`absolute ${pos} opacity-[0.07]`}>
+            <svg viewBox="0 0 50 50" className="w-12 h-12" fill="#E07000">
+              {[0, 72, 144, 216, 288].map(a => (
+                <ellipse key={a} cx="25" cy="10" rx="7" ry="14" transform={`rotate(${a} 25 25)`}/>
+              ))}
+              <circle cx="25" cy="25" r="5"/>
+            </svg>
+          </div>
+        ))}
+      </div>
+    ),
+  },
+
+  'marigold-fest': {
+    wrapper: 'bg-[#FFF8EE] text-[#3D2000]',
+    titleClass: 'text-[11px] font-bold uppercase tracking-[0.15em] text-[#B85C00] mb-1.5 pb-1 border-b-2 border-[#F5A623]/40',
+    fontFamily: "'Libre Baskerville', serif",
+    photoBorder: '#F5A623',
+    photoSize: 'lg',
+    photoPosition: 'header-center',
+    header: (data) => (
+      <div className="text-center mb-4">
+        <div className="inline-flex items-center gap-2 mb-1">
+          <svg viewBox="0 0 20 20" className="w-5 h-5 opacity-40" fill="#F5A623">
+            {[0, 45, 90, 135, 180, 225, 270, 315].map(a => (
+              <ellipse key={a} cx="10" cy="3" rx="3" ry="6" transform={`rotate(${a} 10 10)`}/>
+            ))}
+            <circle cx="10" cy="10" r="2.5"/>
+          </svg>
+          <span className="text-[#F5A623]/60 text-xs">✦</span>
+          <svg viewBox="0 0 20 20" className="w-5 h-5 opacity-40" fill="#F5A623">
+            {[0, 45, 90, 135, 180, 225, 270, 315].map(a => (
+              <ellipse key={a} cx="10" cy="3" rx="3" ry="6" transform={`rotate(${a} 10 10)`}/>
+            ))}
+            <circle cx="10" cy="10" r="2.5"/>
+          </svg>
+        </div>
+        <p className="text-[10px] text-[#B85C00]/60 tracking-wider" style={{ fontFamily: "'Libre Baskerville', serif" }}>॥ शुभ मंगल सावधान ॥</p>
+        <h1 className="text-xl font-bold text-[#8B4000] mt-1" style={{ fontFamily: "'Libre Baskerville', serif" }}>{data.name || 'Your Name'}</h1>
+      </div>
+    ),
+    decor: (
+      <div className="absolute inset-0 pointer-events-none select-none">
+        <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#E07000] via-[#F5A623] to-[#E07000]" />
+        <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-[#E07000] via-[#F5A623] to-[#E07000]" />
+        <div className="absolute inset-3 border border-[#F5A623]/20" />
+        {(['top-3 left-3', 'top-3 right-3 -scale-x-100', 'bottom-3 left-3 -scale-y-100', 'bottom-3 right-3 -scale-x-100 -scale-y-100'] as const).map((pos, i) => (
+          <div key={i} className={`absolute ${pos} opacity-[0.12]`}>
+            <svg viewBox="0 0 40 40" className="w-10 h-10" fill="#F5A623">
+              {[0, 45, 90, 135, 180, 225, 270, 315].map(a => (
+                <ellipse key={a} cx="20" cy="6" rx="4" ry="10" transform={`rotate(${a} 20 20)`}/>
+              ))}
+              <circle cx="20" cy="20" r="4"/>
+            </svg>
+          </div>
+        ))}
+      </div>
+    ),
+  },
+
+  /* ═══════════════════════════════════════════════
+     ORNATE BORDER (3)
+     ═══════════════════════════════════════════════ */
+  'lotus-frame': {
+    wrapper: 'bg-white text-[#4A2C2A]',
+    titleClass: 'text-[11px] font-bold uppercase tracking-[0.15em] text-[#9B1010] mb-1.5 pb-1 border-b border-[#9B1010]/15',
+    fontFamily: "'Playfair Display', serif",
+    photoBorder: '#9B1010',
+    photoSize: 'lg',
+    photoPosition: 'header-right',
+    header: (data) => (
+      <div className="text-center mb-4">
+        <p className="text-[11px] text-[#9B1010]/70 tracking-wider" style={{ fontFamily: "'Playfair Display', serif" }}>॥ श्री गणेशाय नमः ॥</p>
+        <div className="flex items-center justify-center gap-3 my-1.5">
+          <div className="h-px w-10 bg-[#9B1010]/25" />
+          <svg viewBox="0 0 20 20" className="w-4 h-4 opacity-40" fill="#9B1010">
+            {[0, 60, 120, 180, 240, 300].map(a => (
+              <ellipse key={a} cx="10" cy="3" rx="3" ry="6" transform={`rotate(${a} 10 10)`}/>
+            ))}
+            <circle cx="10" cy="10" r="2"/>
+          </svg>
+          <div className="h-px w-10 bg-[#9B1010]/25" />
+        </div>
+        <h1 className="text-xl font-bold text-[#9B1010]" style={{ fontFamily: "'Playfair Display', serif" }}>{data.name || 'Your Name'}</h1>
+      </div>
+    ),
+    decor: (
+      <div className="absolute inset-0 pointer-events-none select-none">
+        {/* Multi-layered frame */}
+        <div className="absolute inset-0 border-[6px] border-[#9B1010]" />
+        <div className="absolute inset-[8px] border border-[#9B1010]/30" />
+        <div className="absolute inset-[11px] border border-[#9B1010]/15" />
+        {/* Lotus corners - all 4 */}
+        {(['top-0 left-0', 'top-0 right-0 -scale-x-100', 'bottom-0 left-0 -scale-y-100', 'bottom-0 right-0 -scale-x-100 -scale-y-100'] as const).map((pos, i) => (
+          <div key={i} className={`absolute ${pos} w-14 h-14`}>
+            <svg viewBox="0 0 56 56" fill="none">
+              <path d="M0 0 L20 0 L20 3 L3 3 L3 20 L0 20 Z" fill="#9B1010"/>
+              <path d="M0 0 L20 0 L20 3 L3 3 L3 20 L0 20 Z" fill="#9B1010" transform="translate(2,2) scale(0.7)" opacity="0.4"/>
+              {/* Lotus petals at corner */}
+              <path d="M22 22 Q22 14 28 14 Q34 14 34 22 Q28 28 22 22Z" fill="#9B1010" opacity="0.3"/>
+              <path d="M22 22 Q14 22 14 28 Q14 34 22 34 Q28 28 22 22Z" fill="#9B1010" opacity="0.3"/>
+              <path d="M22 22 Q18 16 24 12 Q30 16 28 22 Q25 24 22 22Z" fill="#9B1010" opacity="0.2"/>
+            </svg>
+          </div>
+        ))}
+        {/* Mid-border lotus buds */}
+        {(['top-0 left-1/2 -translate-x-1/2', 'bottom-0 left-1/2 -translate-x-1/2', 'left-0 top-1/2 -translate-y-1/2 rotate-90', 'right-0 top-1/2 -translate-y-1/2 -rotate-90'] as const).map((pos, i) => (
+          <div key={i} className={`absolute ${pos} w-8 h-8`}>
+            <svg viewBox="0 0 32 32" fill="#9B1010">
+              <ellipse cx="16" cy="8" rx="4" ry="7" opacity="0.6"/>
+              <ellipse cx="10" cy="12" rx="4" ry="7" transform="rotate(-30 10 12)" opacity="0.4"/>
+              <ellipse cx="22" cy="12" rx="4" ry="7" transform="rotate(30 22 12)" opacity="0.4"/>
+              <circle cx="16" cy="18" r="3" opacity="0.5"/>
+            </svg>
+          </div>
+        ))}
+      </div>
+    ),
+  },
+
+  'mandala-cream': {
+    wrapper: 'bg-[#FDF8EF] text-[#3D2B1F]',
+    titleClass: 'text-[11px] font-bold uppercase tracking-[0.15em] text-[#8B5E3C] mb-1.5 pb-1 border-b border-[#C9956C]/20',
+    fontFamily: "'Crimson Pro', serif",
+    photoBorder: '#8B5E3C',
+    photoSize: 'lg',
+    photoPosition: 'header-center',
+    header: (data) => (
+      <div className="text-center mb-4">
+        <p className="text-[10px] text-[#8B5E3C]/60 tracking-[0.3em]" style={{ fontFamily: "'Crimson Pro', serif" }}>॥ श्री गणेशाय नमः ॥</p>
+        <h1 className="text-xl font-bold text-[#5C3A1E] mt-1" style={{ fontFamily: "'Crimson Pro', serif" }}>{data.name || 'Your Name'}</h1>
+        <p className="text-[9px] tracking-[0.3em] uppercase text-[#8B5E3C]/40 mt-0.5">Marriage Biodata</p>
+      </div>
+    ),
+    decor: (
+      <div className="absolute inset-0 pointer-events-none select-none">
+        {/* Ornate double frame */}
+        <div className="absolute inset-[5px] border-2 border-[#8B5E3C]/30" />
+        <div className="absolute inset-[9px] border border-[#C9956C]/20" />
+        {/* Corner ornament SVGs */}
+        {(['top-[5px] left-[5px]', 'top-[5px] right-[5px] -scale-x-100', 'bottom-[5px] left-[5px] -scale-y-100', 'bottom-[5px] right-[5px] -scale-x-100 -scale-y-100'] as const).map((pos, i) => (
+          <div key={i} className={`absolute ${pos} w-12 h-12`}>
+            <svg viewBox="0 0 48 48" fill="none" stroke="#8B5E3C" strokeWidth="0.8" opacity="0.5">
+              <path d="M2 2 L18 2" strokeWidth="2"/>
+              <path d="M2 2 L2 18" strokeWidth="2"/>
+              <path d="M5 5 L14 5 L14 6 L6 6 L6 14 L5 14 Z" fill="#8B5E3C" opacity="0.3" stroke="none"/>
+              <path d="M12 12 Q12 6 18 6 Q24 6 24 12" strokeWidth="0.8" fill="none"/>
+              <path d="M12 12 Q6 12 6 18 Q6 24 12 24" strokeWidth="0.8" fill="none"/>
+              <circle cx="12" cy="12" r="2" fill="#8B5E3C" opacity="0.4" stroke="none"/>
+            </svg>
+          </div>
+        ))}
+        {/* Large mandala watermark */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-[0.04]">
+          <svg viewBox="0 0 200 200" className="w-3/4 h-3/4" fill="none" stroke="#8B5E3C">
+            {[0, 22.5, 45, 67.5, 90, 112.5, 135, 157.5, 180, 202.5, 225, 247.5, 270, 292.5, 315, 337.5].map(a => (
+              <ellipse key={a} cx="100" cy="28" rx="8" ry="22" transform={`rotate(${a} 100 100)`} strokeWidth="0.5"/>
+            ))}
+            {[80, 60, 42].map(r => <circle key={r} cx="100" cy="100" r={r} strokeWidth="0.4"/>)}
+          </svg>
+        </div>
+      </div>
+    ),
+  },
+
+  'vermillion-frame': {
+    wrapper: 'bg-white text-[#2D1515]',
+    titleClass: 'text-[11px] font-bold uppercase tracking-[0.15em] text-white bg-[#CC2200] px-2 py-1 mb-1.5',
+    fontFamily: "'Libre Baskerville', serif",
+    photoBorder: '#CC2200',
+    photoSize: 'lg',
+    photoPosition: 'header-right',
+    header: (data) => (
+      <div className="text-center mb-4">
+        <p className="text-[11px] text-[#CC2200]/70 tracking-wider" style={{ fontFamily: "'Libre Baskerville', serif" }}>☙ श्री गणेशाय नमः ❧</p>
+        <h1 className="text-xl font-bold text-[#CC2200] mt-1.5" style={{ fontFamily: "'Libre Baskerville', serif" }}>{data.name || 'Your Name'}</h1>
+        <div className="flex items-center justify-center gap-2 mt-1.5">
+          <div className="h-0.5 w-16 bg-[#CC2200]/30" />
+          <div className="w-1.5 h-1.5 bg-[#CC2200]/50 rotate-45" />
+          <div className="h-0.5 w-16 bg-[#CC2200]/30" />
+        </div>
+      </div>
+    ),
+    decor: (
+      <div className="absolute inset-0 pointer-events-none select-none">
+        {/* Bold outer frame */}
+        <div className="absolute inset-0 border-[5px] border-[#CC2200]" />
+        <div className="absolute inset-[7px] border-[1.5px] border-[#CC2200]/50" />
+        <div className="absolute inset-[10px] border border-[#CC2200]/20" />
+        {/* Decorative corner pieces */}
+        {(['top-0 left-0', 'top-0 right-0 -scale-x-100', 'bottom-0 left-0 -scale-y-100', 'bottom-0 right-0 -scale-x-100 -scale-y-100'] as const).map((pos, i) => (
+          <div key={i} className={`absolute ${pos} w-16 h-16`}>
+            <svg viewBox="0 0 64 64" fill="#CC2200">
+              {/* Bold corner L-shape */}
+              <rect x="0" y="0" width="24" height="5"/>
+              <rect x="0" y="0" width="5" height="24"/>
+              {/* Inner accent */}
+              <rect x="7" y="7" width="14" height="2.5" opacity="0.4"/>
+              <rect x="7" y="7" width="2.5" height="14" opacity="0.4"/>
+              {/* Decorative diamond */}
+              <rect x="10" y="10" width="6" height="6" transform="rotate(45 13 13)" opacity="0.3"/>
+            </svg>
+          </div>
+        ))}
+        {/* Diamond center accents on borders */}
+        {(['top-[1px] left-1/2 -translate-x-1/2', 'bottom-[1px] left-1/2 -translate-x-1/2'] as const).map((pos, i) => (
+          <div key={i} className={`absolute ${pos}`}>
+            <svg viewBox="0 0 40 10" className="w-10 h-2.5" fill="#CC2200">
+              <rect x="16" y="1" width="8" height="8" transform="rotate(45 20 5)"/>
+            </svg>
+          </div>
+        ))}
+      </div>
+    ),
+  },
+
+  /* ═══════════════════════════════════════════════
+     PASTEL ROMANTIC (2)
+     ═══════════════════════════════════════════════ */
+  'blush-romance': {
+    wrapper: 'bg-gradient-to-br from-[#FFF0F4] via-[#FFF5F8] to-[#FFF0F0] text-[#4A2030]',
+    titleClass: 'text-[11px] font-semibold uppercase tracking-[0.18em] text-[#C2185B] mb-1.5 pb-1 border-b border-[#F48FB1]/30',
+    fontFamily: "'Lora', serif",
+    photoBorder: '#F06292',
+    photoSize: 'lg',
+    photoPosition: 'header-center',
+    header: (data) => (
+      <div className="text-center mb-3">
+        <p className="text-[10px] tracking-[0.25em] text-[#F06292]/60">✿ Biodata ✿</p>
+        <h1 className="text-xl font-bold text-[#AD1457] mt-0.5" style={{ fontFamily: "'Lora', serif" }}>{data.name || 'Your Name'}</h1>
+        <div className="flex items-center justify-center gap-2 mt-1">
+          <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#F48FB1]/50" />
+          <svg viewBox="0 0 16 16" className="w-3 h-3 opacity-50" fill="#F06292">
+            {[0, 72, 144, 216, 288].map(a => (
+              <ellipse key={a} cx="8" cy="3" rx="2.5" ry="5" transform={`rotate(${a} 8 8)`}/>
+            ))}
+            <circle cx="8" cy="8" r="1.5"/>
+          </svg>
+          <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#F48FB1]/50" />
+        </div>
+      </div>
+    ),
+    decor: (
+      <div className="absolute inset-0 pointer-events-none select-none">
+        <div className="absolute inset-3 border border-[#F48FB1]/25 rounded-lg" />
+        {/* Large rose watermark at center */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-[0.04]">
+          <svg viewBox="0 0 200 200" className="w-4/5 h-4/5" fill="#C2185B">
+            {[0, 40, 80, 120, 160, 200, 240, 280, 320].map(a => (
+              <ellipse key={a} cx="100" cy="30" rx="16" ry="42" transform={`rotate(${a} 100 100)`}/>
+            ))}
+            <circle cx="100" cy="100" r="20"/>
+          </svg>
+        </div>
+        {/* Corner rose buds */}
+        {(['top-3 left-3', 'top-3 right-3 -scale-x-100', 'bottom-3 left-3 -scale-y-100', 'bottom-3 right-3 -scale-x-100 -scale-y-100'] as const).map((pos, i) => (
+          <div key={i} className={`absolute ${pos} opacity-[0.1]`}>
+            <svg viewBox="0 0 40 40" className="w-10 h-10" fill="#C2185B">
+              {[0, 72, 144, 216, 288].map(a => (
+                <ellipse key={a} cx="20" cy="8" rx="5" ry="12" transform={`rotate(${a} 20 20)`}/>
+              ))}
+              <circle cx="20" cy="20" r="4"/>
+            </svg>
+          </div>
+        ))}
+        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#F48FB1]/40 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#F48FB1]/40 to-transparent" />
+      </div>
+    ),
+  },
+
+  'lilac-dream': {
+    wrapper: 'bg-[#F6F3FF] text-[#2D1F5E]',
+    titleClass: 'text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7C4DFF] mb-1.5 pb-1 border-b border-[#CE93D8]/30',
+    fontFamily: "'Nunito', sans-serif",
+    photoBorder: '#9C64A6',
+    photoSize: 'lg',
+    photoPosition: 'header-center',
+    header: (data) => (
+      <div className="text-center mb-3">
+        <div className="inline-flex items-center gap-2 mb-0.5">
+          <div className="h-px w-8 bg-[#CE93D8]/40" />
+          <span className="text-[#9C64A6]/50 text-[10px]">✦</span>
+          <div className="h-px w-8 bg-[#CE93D8]/40" />
+        </div>
+        <p className="text-[10px] text-[#9C64A6]/60 tracking-wider" style={{ fontFamily: "'Nunito', sans-serif" }}>Marriage Biodata</p>
+        <h1 className="text-xl font-bold text-[#512DA8] mt-0.5" style={{ fontFamily: "'Nunito', sans-serif" }}>{data.name || 'Your Name'}</h1>
+      </div>
+    ),
+    decor: (
+      <div className="absolute inset-0 pointer-events-none select-none">
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#9C64A6] via-[#CE93D8] to-[#7C4DFF]" />
+        <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#7C4DFF] via-[#CE93D8] to-[#9C64A6]" />
+        <div className="absolute inset-3 border border-[#CE93D8]/20 rounded-lg" />
+        {/* Floating petal motifs */}
+        {(['top-4 right-4', 'bottom-4 left-4 rotate-180'] as const).map((pos, i) => (
+          <div key={i} className={`absolute ${pos} opacity-[0.07]`}>
+            <svg viewBox="0 0 60 60" className="w-16 h-16" fill="#7C4DFF">
+              {[0, 60, 120, 180, 240, 300].map(a => (
+                <ellipse key={a} cx="30" cy="10" rx="8" ry="18" transform={`rotate(${a} 30 30)`}/>
+              ))}
+              <circle cx="30" cy="30" r="6"/>
+            </svg>
+          </div>
+        ))}
+      </div>
+    ),
+  },
 };
 
 /* ── Template list for dropdown ── */
@@ -821,4 +1282,18 @@ export const templateList: { value: TemplateType; label: string; group: string }
   { value: 'meher', label: '🍑 Meher', group: 'Soft & Floral' },
   { value: 'ananda', label: '💜 Ananda', group: 'Soft & Floral' },
   { value: 'suvarna', label: '☀ Suvarna', group: 'Soft & Floral' },
+  // Dark & Vibrant
+  { value: 'crimson-bold', label: '🔴 Crimson Bold', group: 'Dark & Vibrant' },
+  { value: 'emerald-dark', label: '🟢 Emerald Royal', group: 'Dark & Vibrant' },
+  { value: 'indigo-night', label: '🌌 Indigo Night', group: 'Dark & Vibrant' },
+  // Festive Indian
+  { value: 'saffron-utsav', label: '🪔 Saffron Utsav', group: 'Festive Indian' },
+  { value: 'marigold-fest', label: '🌼 Marigold Fest', group: 'Festive Indian' },
+  // Ornate Border
+  { value: 'lotus-frame', label: '🪷 Lotus Frame', group: 'Ornate Border' },
+  { value: 'mandala-cream', label: '🔵 Mandala Cream', group: 'Ornate Border' },
+  { value: 'vermillion-frame', label: '🟥 Vermillion Frame', group: 'Ornate Border' },
+  // Pastel Romantic
+  { value: 'blush-romance', label: '🌸 Blush Romance', group: 'Pastel Romantic' },
+  { value: 'lilac-dream', label: '💜 Lilac Dream', group: 'Pastel Romantic' },
 ];
