@@ -1,7 +1,8 @@
 import { TemplateType } from '@/types/biodata';
 import { Button } from '@/components/ui/button';
 import { Download, Link2, Sparkles } from 'lucide-react';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { templateList } from '@/components/templates/templateConfigs';
 
 interface PreviewControlsProps {
   template: TemplateType;
@@ -11,28 +12,27 @@ interface PreviewControlsProps {
   onMatchKundli: () => void;
 }
 
-const templates: { value: TemplateType; label: string }[] = [
-  { value: 'minimalist', label: '✦ Minimalist' },
-  { value: 'traditional', label: '☸ Traditional' },
-  { value: 'royal', label: '❖ Royal Gold' },
-  { value: 'modern-teal', label: '◉ Modern Teal' },
-  { value: 'elegant-maroon', label: '☙ Elegant Maroon' },
-  { value: 'floral', label: '✿ Elegant Floral' },
-  { value: 'sunset-glow', label: '★ Sunset Glow' },
-  { value: 'navy-classic', label: '■ Navy Classic' },
-  { value: 'sage-botanical', label: '♧ Sage Botanical' },
-];
+const groupedTemplates = templateList.reduce((acc, t) => {
+  if (!acc[t.group]) acc[t.group] = [];
+  acc[t.group].push(t);
+  return acc;
+}, {} as Record<string, typeof templateList>);
 
 const PreviewControls = ({ template, onTemplateChange, onDownload, onShare, onMatchKundli }: PreviewControlsProps) => {
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
       <Select value={template} onValueChange={(v) => onTemplateChange(v as TemplateType)}>
-        <SelectTrigger className="w-[200px] text-xs">
+        <SelectTrigger className="w-[220px] text-xs">
           <SelectValue placeholder="Select template" />
         </SelectTrigger>
-        <SelectContent>
-          {templates.map(t => (
-            <SelectItem key={t.value} value={t.value} className="text-xs">{t.label}</SelectItem>
+        <SelectContent className="max-h-[400px]">
+          {Object.entries(groupedTemplates).map(([group, items]) => (
+            <SelectGroup key={group}>
+              <SelectLabel className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">{group}</SelectLabel>
+              {items.map(t => (
+                <SelectItem key={t.value} value={t.value} className="text-xs">{t.label}</SelectItem>
+              ))}
+            </SelectGroup>
           ))}
         </SelectContent>
       </Select>
