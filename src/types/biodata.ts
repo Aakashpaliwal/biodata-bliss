@@ -86,4 +86,28 @@ export type TemplateType =
   | 'floral'
   | 'sunset-glow'
   | 'navy-classic'
-  | 'sage-botanical';
+  | 'sage-botanical'
+  // Elegant Traditional
+  | 'sanskriti'
+  | 'veda'
+  | 'parampara'
+  | 'mangalam'
+  | 'aaradhya'
+  // Modern Minimalist
+  | 'lumina'
+  | 'nova'
+  | 'ekant'
+  | 'aura'
+  | 'anya'
+  // Royal & Premium
+  | 'rajwada'
+  | 'patrika'
+  | 'saanjh'
+  | 'amaya'
+  | 'kavya'
+  // Soft & Floral
+  | 'aarambh'
+  | 'pallav'
+  | 'meher'
+  | 'ananda'
+  | 'suvarna';
