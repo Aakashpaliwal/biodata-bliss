@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { BiodataFormData, TemplateType, defaultBiodata } from '@/types/biodata';
 import BiodataForm from '@/components/BiodataForm';
 import BiodataPreview from '@/components/BiodataPreview';
@@ -7,17 +7,37 @@ import KundliMatchModal from '@/components/KundliMatchModal';
 import { Button } from '@/components/ui/button';
 import { Eye, PenLine } from 'lucide-react';
 import { toast } from 'sonner';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 const Index = () => {
   const [data, setData] = useState<BiodataFormData>(defaultBiodata);
   const [template, setTemplate] = useState<TemplateType>('traditional');
   const [kundliOpen, setKundliOpen] = useState(false);
   const [mobileView, setMobileView] = useState<'form' | 'preview'>('form');
+  const previewRef = useRef<HTMLDivElement>(null);
 
-  const handleDownload = () => {
-    toast.info('PDF download feature coming soon!', {
-      description: 'This will generate and download your biodata as a PDF.',
-    });
+  const handleDownload = async () => {
+    if (!previewRef.current) return;
+    const toastId = toast.loading('Generating PDF...');
+    try {
+      const el = previewRef.current;
+      const canvas = await html2canvas(el, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: null,
+        logging: false,
+      });
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pdfW = pdf.internal.pageSize.getWidth();
+      const pdfH = pdf.internal.pageSize.getHeight();
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfW, pdfH);
+      pdf.save(`${data.name || 'biodata'}.pdf`);
+      toast.success('PDF downloaded!', { id: toastId });
+    } catch {
+      toast.error('Failed to generate PDF', { id: toastId });
+    }
   };
 
   const handleShare = () => {
