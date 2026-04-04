@@ -1,7 +1,7 @@
 import { TemplateType } from '@/types/biodata';
 import { Button } from '@/components/ui/button';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Download, Link2, Sparkles } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface PreviewControlsProps {
   template: TemplateType;
@@ -11,25 +11,28 @@ interface PreviewControlsProps {
   onMatchKundli: () => void;
 }
 
+const templates: { value: TemplateType; label: string }[] = [
+  { value: 'minimalist', label: 'Minimalist' },
+  { value: 'traditional', label: 'Traditional' },
+  { value: 'royal', label: 'Royal Gold' },
+  { value: 'modern-teal', label: 'Modern Teal' },
+  { value: 'elegant-maroon', label: 'Elegant Maroon' },
+  { value: 'floral', label: 'Elegant Floral' },
+];
+
 const PreviewControls = ({ template, onTemplateChange, onDownload, onShare, onMatchKundli }: PreviewControlsProps) => {
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-      <ToggleGroup
-        type="single"
-        value={template}
-        onValueChange={(v) => v && onTemplateChange(v as TemplateType)}
-        className="bg-muted rounded-lg p-0.5"
-      >
-        <ToggleGroupItem value="minimalist" className="text-xs px-3 py-1.5 rounded-md data-[state=on]:bg-card data-[state=on]:shadow-sm">
-          Minimalist
-        </ToggleGroupItem>
-        <ToggleGroupItem value="traditional" className="text-xs px-3 py-1.5 rounded-md data-[state=on]:bg-card data-[state=on]:shadow-sm">
-          Traditional
-        </ToggleGroupItem>
-        <ToggleGroupItem value="floral" className="text-xs px-3 py-1.5 rounded-md data-[state=on]:bg-card data-[state=on]:shadow-sm">
-          Elegant Floral
-        </ToggleGroupItem>
-      </ToggleGroup>
+      <Select value={template} onValueChange={(v) => onTemplateChange(v as TemplateType)}>
+        <SelectTrigger className="w-[180px] text-xs">
+          <SelectValue placeholder="Select template" />
+        </SelectTrigger>
+        <SelectContent>
+          {templates.map(t => (
+            <SelectItem key={t.value} value={t.value} className="text-xs">{t.label}</SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
 
       <div className="flex items-center gap-2">
         <Button size="sm" variant="outline" onClick={onShare} className="text-xs gap-1.5">
