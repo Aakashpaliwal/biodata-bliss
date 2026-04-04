@@ -1,4 +1,6 @@
 export interface BiodataFormData {
+  // Photo
+  photo: string;
   // Personal
   name: string;
   age: string;
@@ -12,7 +14,9 @@ export interface BiodataFormData {
   company: string;
   income: string;
   // Family
+  fatherName: string;
   fatherOccupation: string;
+  motherName: string;
   motherOccupation: string;
   siblings: string;
   familyType: string;
@@ -21,8 +25,15 @@ export interface BiodataFormData {
   dateOfBirth: string;
   timeOfBirth: string;
   placeOfBirth: string;
+  rashi: string;
+  nakshatra: string;
   manglikStatus: string;
   gotra: string;
+  // Contact
+  contactPerson: string;
+  contactNumber: string;
+  email: string;
+  address: string;
   // Partner Preferences
   preferredAgeRange: string;
   preferredHeight: string;
@@ -31,6 +42,7 @@ export interface BiodataFormData {
 }
 
 export const defaultBiodata: BiodataFormData = {
+  photo: '',
   name: '',
   age: '',
   height: '',
@@ -41,7 +53,9 @@ export const defaultBiodata: BiodataFormData = {
   occupation: '',
   company: '',
   income: '',
+  fatherName: '',
   fatherOccupation: '',
+  motherName: '',
   motherOccupation: '',
   siblings: '',
   familyType: '',
@@ -49,12 +63,18 @@ export const defaultBiodata: BiodataFormData = {
   dateOfBirth: '',
   timeOfBirth: '',
   placeOfBirth: '',
+  rashi: '',
+  nakshatra: '',
   manglikStatus: '',
   gotra: '',
+  contactPerson: '',
+  contactNumber: '',
+  email: '',
+  address: '',
   preferredAgeRange: '',
   preferredHeight: '',
   preferredEducation: '',
   preferredProfession: '',
 };
 
-export type TemplateType = 'minimalist' | 'traditional' | 'floral';
+export type TemplateType = 'minimalist' | 'traditional' | 'royal' | 'modern-teal' | 'elegant-maroon' | 'floral';
