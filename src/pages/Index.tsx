@@ -8,7 +8,7 @@ import KundliMatchModal from '@/components/KundliMatchModal';
 import { Button } from '@/components/ui/button';
 import { Eye, PenLine, ArrowLeft } from 'lucide-react';
 import { toast } from 'sonner';
-import html2canvas from 'html2canvas';
+import { toCanvas } from 'html-to-image';
 import jsPDF from 'jspdf';
 
 const Index = () => {
@@ -25,21 +25,77 @@ const Index = () => {
     if (!previewRef.current) return;
     const toastId = toast.loading('Generating PDF...');
     try {
-      const el = previewRef.current;
-      const canvas = await html2canvas(el, {
-        scale: 2,
-        useCORS: true,
-        backgroundColor: null,
-        logging: false,
+      const wrapper = previewRef.current;
+
+      // Target the actual constrained divs inside BiodataPreview
+      const outerEl = wrapper.querySelector<HTMLDivElement>('.a4-ratio') ?? wrapper;
+      const innerEl = outerEl.querySelector<HTMLDivElement>('.overflow-y-auto');
+
+      // ── 1. Save & unlock outer (a4-ratio + overflow-hidden) ──
+      const savedOuterAspect   = outerEl.style.aspectRatio;
+      const savedOuterOverflow = outerEl.style.overflow;
+      const savedOuterHeight   = outerEl.style.height;
+      outerEl.style.aspectRatio = 'auto';
+      outerEl.style.overflow    = 'visible';
+      outerEl.style.height      = 'auto';
+
+      // ── 2. Save & unlock inner scrollable div ──
+      const savedInnerHeight    = innerEl?.style.height    ?? '';
+      const savedInnerOverflow  = innerEl?.style.overflow  ?? '';
+      const savedInnerMaxHeight = innerEl?.style.maxHeight ?? '';
+      if (innerEl) {
+        innerEl.style.height    = 'auto';
+        innerEl.style.overflow  = 'visible';
+        innerEl.style.maxHeight = 'none';
+      }
+
+      // ── 3. Two rAF ticks so the browser fully reflows ──
+      await new Promise<void>(r => requestAnimationFrame(() => requestAnimationFrame(() => r())));
+
+      const captureWidth  = outerEl.offsetWidth;
+      const captureHeight = outerEl.scrollHeight;
+
+      const canvas = await toCanvas(outerEl, {
+        pixelRatio: 2,
+        backgroundColor: '#ffffff',
+        width: captureWidth,
+        height: captureHeight,
       });
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4');
+
+      // ── 4. Restore styles ──
+      outerEl.style.aspectRatio = savedOuterAspect;
+      outerEl.style.overflow    = savedOuterOverflow;
+      outerEl.style.height      = savedOuterHeight;
+      if (innerEl) {
+        innerEl.style.height    = savedInnerHeight;
+        innerEl.style.overflow  = savedInnerOverflow;
+        innerEl.style.maxHeight = savedInnerMaxHeight;
+      }
+
+      // ── 5. Build PDF (multi-page if content > one A4) ──
+      const imgData = canvas.toDataURL('image/jpeg', 0.95);
+      const pdf  = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
       const pdfW = pdf.internal.pageSize.getWidth();
       const pdfH = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, 'PNG', 0, 0, pdfW, pdfH);
+      const imgH = (canvas.height * pdfW) / canvas.width;
+
+      if (imgH <= pdfH) {
+        pdf.addImage(imgData, 'JPEG', 0, 0, pdfW, imgH);
+      } else {
+        let offsetY = 0;
+        let page = 0;
+        while (offsetY < imgH) {
+          if (page > 0) pdf.addPage();
+          pdf.addImage(imgData, 'JPEG', 0, -offsetY, pdfW, imgH);
+          offsetY += pdfH;
+          page++;
+        }
+      }
+
       pdf.save(`${data.name || 'biodata'}.pdf`);
       toast.success('PDF downloaded!', { id: toastId });
-    } catch {
+    } catch (err) {
+      console.error('PDF generation error:', err);
       toast.error('Failed to generate PDF', { id: toastId });
     }
   };
